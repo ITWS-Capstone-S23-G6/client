@@ -1,0 +1,66 @@
+#HomePageIcon{
+    width: 5.5%;
+    height: 5.5%;
+    margin-left: 1.2%;
+    margin-top: 14px;
+
+    display: block;
+    float: left;
+}
+
+img#NavIcon{
+    padding-top: 0.7%;
+    padding-left: 0.2%;
+    margin-left: 20px;
+    display: block;
+    float: right;
+    width: 2.8%;
+    height: 2.8%;
+}
+
+#Nav{
+    margin-bottom: 20px;
+}
+
+.IndivNav{
+    padding-bottom: 8%;
+}
+
+a#LogoHome.navbar-brand{
+    margin-top: 0%;
+    padding-top: 0%;
+    font-size: 0em;
+}
+
+#NavTextsLinks{
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.NavText{
+    display: block;
+    float: right;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25em;
+    text-decoration: none;
+    color: #F4F4F4;
+
+    margin-left: 0.5%;
+    margin-top: 0.2%;
+    margin-right: 0.8%;
+    padding: 8px;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.NavText:hover{
+    text-shadow: 1px 0px 0.5px #F4F4F4;
+}
+
