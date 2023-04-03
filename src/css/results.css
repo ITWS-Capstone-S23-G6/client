@@ -1,0 +1,260 @@
+#NavSpace {
+    height: 4.7em;
+    width: 100%;
+    text-align: center;
+}
+
+/* Page CSS */
+
+#OrgTitle{
+    font-family: 'Julius Sans One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    margin-top: 30px;
+}
+
+#OrgTitle2{
+    font-family: 'Julius Sans One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    margin-top: 30px;
+    margin-left: 9%;
+}
+
+#OrgTitle3{
+    font-family: 'Julius Sans One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    margin-top: 58%; 
+    padding-top: 14%;
+    margin-left: 9%;
+}
+
+#OrgBox{
+    margin-bottom: 2%;
+    margin-top: 0.3%;
+    box-sizing: border-box;
+    position: absolute;
+    width: 600px;
+    height: 1000px;
+    border-top: 5px solid #E5E6E4;
+
+    -ms-overflow-style: none;
+    overflow-y:scroll;
+}
+
+#OrgBox2{
+    margin-bottom: 2%;
+    margin-top: 0.3%;
+    margin-left: 4%;
+    box-sizing: border-box;
+    position: absolute;
+    width: 600px;
+    height: 440px;
+    border-top: 5px solid #E5E6E4;
+
+    -ms-overflow-style: none;
+    overflow-y:scroll;
+}
+
+#OrgBox::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+#OrgBox2::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+#OrgUsSection{
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 0%;
+    max-width: 96%;
+    background-color: #0f1521;
+}
+
+/* Applicants Section CSS */
+
+.ApplicantsBox{
+    margin-top: 7%;
+    margin-bottom: 7%;
+    width: 600px;
+    height: 150px;
+    background: rgba(166, 162, 162, 0.3);
+    border-radius: 10px;
+}
+
+.dot {
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    background: #EDF2FB;
+
+    margin-top: 2.5%;
+    margin-left: 2%;
+}
+
+.ApplicantsName{
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    padding-top: 2.5%;
+    margin-bottom: 0px;
+}
+
+.ApplicantsSubtitle{
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+    padding-top: 3%;
+}
+
+
+/* Results Section CSS */
+/* https://react-data-table-component.netlify.app/ */
+
+#Resultsform{
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+#Resultsquery{
+    width: 85%;
+    height: 40px;
+    margin-right: 1%;
+    border-radius: 5px;
+    text-decoration: none;
+    border-color: transparent;
+}
+
+#Resultsquery:hover{
+    text-decoration: none;
+    border-color: transparent;
+}
+
+#Resultsquery:focus{
+    text-decoration: none;
+    outline : none;
+    border-color: transparent;
+}
+
+#Resultsquery::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    border-radius:0px;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEyMy4wNXB4IiBoZWlnaHQ9IjEyMy4wNXB4IiB2aWV3Qm94PSIwIDAgMTIzLjA1IDEyMy4wNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIzLjA1IDEyMy4wNTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTEyMS4zMjUsMTAuOTI1bC04LjUtOC4zOTljLTIuMy0yLjMtNi4xLTIuMy04LjUsMGwtNDIuNCw0Mi4zOTlMMTguNzI2LDEuNzI2Yy0yLjMwMS0yLjMwMS02LjEwMS0yLjMwMS04LjUsMGwtOC41LDguNQ0KCQljLTIuMzAxLDIuMy0yLjMwMSw2LjEsMCw4LjVsNDMuMSw0My4xbC00Mi4zLDQyLjVjLTIuMywyLjMtMi4zLDYuMSwwLDguNWw4LjUsOC41YzIuMywyLjMsNi4xLDIuMyw4LjUsMGw0Mi4zOTktNDIuNGw0Mi40LDQyLjQNCgkJYzIuMywyLjMsNi4xLDIuMyw4LjUsMGw4LjUtOC41YzIuMy0yLjMsMi4zLTYuMSwwLTguNWwtNDIuNS00Mi40bDQyLjQtNDIuMzk5QzEyMy42MjUsMTcuMTI1LDEyMy42MjUsMTMuMzI1LDEyMS4zMjUsMTAuOTI1eiIvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=);
+    background-size: 10px 10px;
+}
+
+#SearchResultsButton{
+    border-radius: 5px;
+    height: 40px;
+    margin-left: 4px;
+    width: 80px;
+    text-decoration: none;
+    border-color: transparent;
+    color: #F4F4F4;
+    font-family: 'Quicksand';
+    background-color: #A79572;
+}
+
+#SearchResultsButton:hover{
+    border-radius: 5px;
+    height: 40px;
+    margin-left: 4px;
+    width: 80px;
+    text-decoration: none;
+    border-color: #A79572;
+    border-width: 2px;
+    color: #F4F4F4;
+    background-color: transparent;
+}
+
+#ResultsTable{
+    margin-top: 7%;
+}
+
+
+/* Matches Section CSS */
+.ProjectsSubtitle{
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    padding-top: 9%;
+}
+
+#MatchesImage{
+    margin-top: 7%;
+    width: 100%;
+    height: 80%;
+}
+
+/* Footer Section CSS */
+
+#FooterOrg{
+    margin-top: 40%;
+}
+
+a#JGIconBoxFooter{
+    padding-top: 0px;
+}
+ 
+#JGIconFooter{
+    padding-top: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.FooterText{
+    margin-top: 0px;
+    margin-left: 1.8%;
+    margin-right: auto;
+
+    color: #F4F4F4;
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.25em;
+}
+
+
