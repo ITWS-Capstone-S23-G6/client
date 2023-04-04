@@ -16,10 +16,11 @@ function Navbar() {
           <img id="HomePageIcon" src={NavIcon} alt="Nav Bar Logo Not Found" />
         </Link>
         <div id="NavTextsLinks">
-          <Link to="/" class="Nav">
+          <a class="Nav" href="https://tie.auth.us-east-1.amazoncognito.com/logout?client_id=2pp0bkoi3sk5dqskb2lmnmq0ib&logout_uri=https://main.d3opyt7nbkxwun.amplifyapp.com"> 
             <h3 class="NavText">Logout</h3>
             <img id="NavIcon" src={LogoutIcon} alt="Logo Not Found" />
-          </Link>
+          </a>
+
           <Link to="/settings" class="IndivNav">
             <h3 class="NavText">Settings</h3>
             <img id="NavIcon" src={SettingsIcon}  alt="Logo Not Found" />
