@@ -2,27 +2,41 @@ import React from 'react';
 import Navbar from "./Navbar";
 import '../css/resumeupload.css';
 // import Page from '../images/Resume.JPG' <img id="NavIcon" style={{'width':"100%", 'height':'auto'}} src={Page} alt="Logo Not Found" /> 
-import AWS from 'aws-sdk';
+import { Amplify, Storage } from 'aws-amplify';
+
+Amplify.configure({
+    Auth: {
+        identityPoolId: 'XX-XXXX-X:XXXXXXXX-XXXX-1234-abcd-1234567890ab', //REQUIRED - Amazon Cognito Identity Pool ID
+        region: 'us-east-2', // REQUIRED - Amazon Cognito Region
+        // userPoolId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito User Pool ID
+        // userPoolWebClientId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito Web Client ID
+    },
+    Storage: {
+        AWSS3: {
+            bucket: 'tie-app-pdfs',
+            region: 'us-east-2',
+        },
+    },
+});
+
 function ResumeUpload() {
-    
 
-    const s3 = new AWS.S3();
-    const BUCKET_NAME = 'tie-app-pdfs';
-
-    const handleUpload = (file) => {
-        const params = {
-            Bucket: BUCKET_NAME,
-            Key: file.name,
-            Body: file
-        };
-        s3.upload(params, (err, data) => {
-            if (err) {
-                console.error(err);
-                return;
+    const handleUpload = async (file) => {
+        Storage.put(file.name, file, {
+            level: 'public',
+            bucket: 'tie-app-pdfs',
+            resumable: true,
+            completeCallback: (event) => {
+                console.log(`Successfully uploaded ${event.key}`);
+            },
+            progressCallback: (progress) => {
+                console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+            },
+            errorCallback: (err) => {
+                console.error('Unexpected error while uploading', err);
             }
-            console.log(`File uploaded successfully. ${data.Location}`);
         });
-    }
+    };
 
     const handleFileSelect = (event) => {
         const file = event.target.files[0];
