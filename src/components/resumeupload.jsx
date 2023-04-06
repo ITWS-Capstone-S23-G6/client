@@ -4,11 +4,7 @@ import '../css/resumeupload.css';
 // import Page from '../images/Resume.JPG' <img id="NavIcon" style={{'width':"100%", 'height':'auto'}} src={Page} alt="Logo Not Found" /> 
 import AWS from 'aws-sdk';
 function ResumeUpload() {
-    AWS.config.update({
-        accessKeyId: 'AKIAYAZALPFKAECVNEKN',
-        secretAccessKey: '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',
-        region: 'us-east-2',
-    });
+    
 
     const s3 = new AWS.S3();
     const BUCKET_NAME = 'tie-app-pdfs';
