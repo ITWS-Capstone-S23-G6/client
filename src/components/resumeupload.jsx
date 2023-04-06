@@ -2,8 +2,38 @@ import React from 'react';
 import Navbar from "./Navbar";
 import '../css/resumeupload.css';
 // import Page from '../images/Resume.JPG' <img id="NavIcon" style={{'width':"100%", 'height':'auto'}} src={Page} alt="Logo Not Found" /> 
-
+import AWS from 'aws-sdk';
 function ResumeUpload() {
+    AWS.config.update({
+        accessKeyId: 'AKIAYAZALPFKAECVNEKN',
+        secretAccessKey: '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',
+        region: 'us-east-2',
+    });
+
+    const s3 = new AWS.S3();
+    const BUCKET_NAME = 'tie-app-pdfs';
+
+    const handleUpload = (file) => {
+        const params = {
+            Bucket: BUCKET_NAME,
+            Key: file.name,
+            Body: file
+        };
+        s3.upload(params, (err, data) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log(`File uploaded successfully. ${data.Location}`);
+        });
+    }
+
+    const handleFileSelect = (event) => {
+        const file = event.target.files[0];
+        console.log(file);
+        handleUpload(file);
+    }
+
     return (
         // React.Fragment <> </>
         <div class="page"> 
@@ -20,7 +50,7 @@ function ResumeUpload() {
                 <form id="ResumeUploadform"> 
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input>
-                    <input type="file" id="ResumeUploadFile" name="filename"></input>
+                    <input type="file" id="ResumeUploadFile" name="filename" onChange={handleFileSelect}></input>
                     <button id="ResumeUploadButton">Search</button>
                 </form>
             </div>
