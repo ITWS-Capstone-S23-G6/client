@@ -6,8 +6,8 @@ import { Amplify, Storage } from 'aws-amplify';
 
 Amplify.configure({
     Auth: {
-        identityPoolId: 'XX-XXXX-X:XXXXXXXX-XXXX-1234-abcd-1234567890ab', //REQUIRED - Amazon Cognito Identity Pool ID
-        region: 'us-east-2', // REQUIRED - Amazon Cognito Region
+        identityPoolId: 'us-east-1:82d6c6ea-65ef-4e04-9e24-72d8df9cde3f', //REQUIRED - Amazon Cognito Identity Pool ID
+        region: 'us-east-1', // REQUIRED - Amazon Cognito Region
         // userPoolId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito User Pool ID
         // userPoolWebClientId: 'XX-XXXX-X_abcd1234', //OPTIONAL - Amazon Cognito Web Client ID
     },
