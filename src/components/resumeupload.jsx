@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import '../css/resumeupload.css';
 // import Page from '../images/Resume.JPG' <img id="NavIcon" style={{'width':"100%", 'height':'auto'}} src={Page} alt="Logo Not Found" /> 
 import { Amplify, Storage } from 'aws-amplify';
+import axios from 'axios';
 
 Amplify.configure({
     Auth: {
@@ -18,6 +19,7 @@ Amplify.configure({
         },
     },
 });
+
 
 function ResumeUpload() {
 
@@ -36,12 +38,32 @@ function ResumeUpload() {
                 console.error('Unexpected error while uploading', err);
             }
         });
+
     };
 
-    const handleFileSelect = (event) => {
+    const handleFileSelect = async (event) => {
         const file = event.target.files[0];
         console.log(file);
-        handleUpload(file);
+        
+        await handleUpload(file);
+
+        const api = 'https://rnb60r24od.execute-api.us-east-2.amazonaws.com/staging';
+        const data = {
+            'S3Object': {
+                'Bucket': 'tie-app-pdfs',
+                'Name': 'public/' + file.name,
+            }
+        };
+
+        axios
+            .post(api, data)
+            .then((response) => {
+                console.log('Response back:');
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
