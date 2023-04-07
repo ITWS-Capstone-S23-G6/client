@@ -22,6 +22,7 @@ Amplify.configure({
 
 
 function ResumeUpload() {
+    let file = '';
 
     const handleUpload = async (file) => {
         Storage.put(file.name, file, {
@@ -41,11 +42,14 @@ function ResumeUpload() {
 
     };
 
-    const handleFileSelect = async (event) => {
-        const file = event.target.files[0];
+    const handleFileSelect = (event) => {
+        file = event.target.files[0];
         console.log(file);
-        
-        await handleUpload(file);
+        handleUpload(file);
+    }
+
+    const handleAnalysis = async (event) => {
+        event.preventDefault();
 
         const api = 'https://rnb60r24od.execute-api.us-east-2.amazonaws.com/staging';
         const data = {
@@ -55,6 +59,7 @@ function ResumeUpload() {
             }
         };
 
+        console.log('Sending post request...');
         axios
             .post(api, data)
             .then((response) => {
@@ -83,7 +88,7 @@ function ResumeUpload() {
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input>
                     <input type="file" id="ResumeUploadFile" name="filename" onChange={handleFileSelect}></input>
-                    <button id="ResumeUploadButton">Search</button>
+                    <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
                 </form>
             </div>
             <div class="footer">
