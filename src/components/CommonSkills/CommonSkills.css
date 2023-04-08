@@ -1,0 +1,72 @@
+/* Skills Section CSS */
+
+.SkillsBox1{
+    margin-top: 7%;
+    margin-bottom: 2%;
+    margin-right: 3%;
+    padding-left: 3%;
+    margin-left: 0.1%;
+
+    width: 280px;
+    height: 150px;
+    background: rgba(166, 162, 162, 0.3);
+    border-radius: 25px;
+    display: inline-block;
+}
+
+.SkillsBox2{
+    padding-left: 5%;
+
+    margin-top: 7%;
+    margin-bottom: 2%;
+    margin-left: 3.3%;
+    width: 280px;
+    height: 150px;
+    background: rgba(166, 162, 162, 0.3);
+    border-radius: 25px;
+    display: inline-block;
+}
+
+#SkillsPadding{
+    padding-left: 0%;
+}
+
+.SkillsImage {
+    border-radius: 0%;
+    display: inline-block;
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    background: transparent;
+
+    margin-top: 3.7%;
+    margin-left: -8%;
+}
+
+.SkillsName{
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    padding-top: 13%;
+    margin-bottom: 0px;
+}
+
+.SkillsSubtitle{
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    padding-top: 9%;
+}
