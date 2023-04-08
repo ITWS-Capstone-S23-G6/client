@@ -13,23 +13,32 @@ import Results from "./components/results";
 import ResumeUpload from "./components/resumeupload";
 import Settings from "./components/settings";
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Landing />} />
-          <Route path="home" element={<Home />} />
-          <Route path="organization" element={<Organization />} />
-          <Route path="results" element={<Results />} />
-          <Route path="resumeupload" element={<ResumeUpload />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="*" element={<Landing />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <ApolloProvider client={client}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Landing />} />
+            <Route path="home" element={<Home />} />
+            <Route path="organization" element={<Organization />} />
+            <Route path="results" element={<Results />} />
+            <Route path="resumeupload" element={<ResumeUpload />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="*" element={<Landing />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
+  </ ApolloProvider>
 );
 
 
