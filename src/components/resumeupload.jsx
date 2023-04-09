@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from "./Navbar";
 import '../css/resumeupload.css';
 // import Page from '../images/Resume.JPG' <img id="NavIcon" style={{'width':"100%", 'height':'auto'}} src={Page} alt="Logo Not Found" /> 
@@ -19,10 +19,10 @@ Amplify.configure({
         },
     },
 });
-
-
 function ResumeUpload() {
     let file = '';
+    const [skillsList, setList] = useState([]);
+    const [checked, setChecked] = useState([]);
 
     const handleUpload = async (file) => {
         Storage.put(file.name, file, {
@@ -48,6 +48,16 @@ function ResumeUpload() {
         handleUpload(file);
     }
 
+    const handleCheck = (event) => {
+        var updatedList = [...checked];
+        if (event.target.checked) {
+            updatedList = [...checked, event.target.value];
+        } else {
+            updatedList.splice(checked.indexOf(event.target.value), 1);
+        }
+        setChecked(updatedList);
+    };
+
     const handleAnalysis = async (event) => {
         event.preventDefault();
 
@@ -65,15 +75,28 @@ function ResumeUpload() {
             .then((response) => {
                 console.log('Response back:');
                 console.log(response);
+                console.log(response["data"]["statusCode"]);
+                let b = response["data"]["body"]
+                setList(JSON.parse(b));
+                console.log(skillsList);
             })
             .catch((error) => {
                 console.error(error);
             });
     }
 
+    const checkedItems = checked.length
+            ? checked.reduce((total, item) => {
+                return total + ", " + item;
+            })
+            : "";
+
+    var isChecked = (item) =>
+        checked.includes(item) ? "checked-item" : "not-checked-item";
+
     return (
         // React.Fragment <> </>
-        <div class="page"> 
+        <div class="page">
             <div id="NavSpace">
                 <Navbar />
             </div>
@@ -84,17 +107,31 @@ function ResumeUpload() {
                     Please fill the fields below with the correct information about the applicant and then drag or drop the applicant's
                     resume in the last field. Only PDFs and DOCX files are accepted.
                 </p>
-                <form id="ResumeUploadform"> 
+                <form id="ResumeUploadform">
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input>
                     <input type="file" id="ResumeUploadFile" name="filename" onChange={handleFileSelect}></input>
                     <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
                 </form>
             </div>
+            <div className='skillsCheckList'>
+                <div className='title'>Select Skills to Upload</div>
+                <div className='list-container'>
+                    {skillsList.map((item, index) => (
+                        <div key={index}>
+                            <input value={item} type="checkbox" onChange={handleCheck} />
+                            <span className={isChecked(item)}>{item}</span>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    {`Items checked are: ${checkedItems}`}
+                </div>
+            </div>
             <div class="footer">
                 <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
                     <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
-                </a>    
+                </a>
                 <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
             </div>
         </div>
