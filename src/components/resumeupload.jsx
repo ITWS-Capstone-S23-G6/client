@@ -20,33 +20,32 @@ Amplify.configure({
     },
 });
 function ResumeUpload() {
-    let file = '';
     const [skillsList, setList] = useState([]);
     const [checked, setChecked] = useState([]);
 
     const handleUpload = async (file) => {
-        Storage.put(file.name, file, {
-            level: 'public',
-            bucket: 'tie-app-pdfs',
-            resumable: true,
-            completeCallback: (event) => {
-                console.log(`Successfully uploaded ${event.key}`);
-            },
-            progressCallback: (progress) => {
-                console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
-            },
-            errorCallback: (err) => {
-                console.error('Unexpected error while uploading', err);
-            }
+        
+        return new Promise(res => {
+            Storage.put(file.name, file, {
+                level: 'public',
+                bucket: 'tie-app-pdfs',
+                resumable: true,
+                completeCallback: (event) => {
+                    console.log(`Successfully uploaded ${event.key}`);
+                    res("Promise finished.");
+                },
+                progressCallback: (progress) => {
+                    console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+                },
+                errorCallback: (err) => {
+                    console.error('Unexpected error while uploading', err);
+                    res("Promise error.");
+                }
+            });
+            
         });
 
     };
-
-    const handleFileSelect = (event) => {
-        file = event.target.files[0];
-        console.log(file);
-        handleUpload(file);
-    }
 
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -58,8 +57,20 @@ function ResumeUpload() {
         setChecked(updatedList);
     };
 
+    const handleSkills = async (event) => {
+        
+    };
+
     const handleAnalysis = async (event) => {
         event.preventDefault();
+        
+        // Get file
+        const file = document.getElementById("ResumeUploadFile").files[0];
+        console.log(file);
+        // Call upload function
+        const res = await handleUpload(file);
+        console.log(res);
+        
 
         const api = 'https://rnb60r24od.execute-api.us-east-2.amazonaws.com/staging';
         const data = {
@@ -110,13 +121,13 @@ function ResumeUpload() {
                 <form id="ResumeUploadform">
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
                     <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input>
-                    <input type="file" id="ResumeUploadFile" name="filename" onChange={handleFileSelect}></input>
+                    <input type="file" id="ResumeUploadFile" name="filename"></input>
                     <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
                 </form>
             </div>
-            <div className='skillsCheckList'>
-                <div className='title'>Select Skills to Upload</div>
-                <div className='list-container'>
+            <div id="SkillsContainer">
+                <div id='SkillsTitle'>Upload Skills</div>
+                <div id='SkillsList'>
                     {skillsList.map((item, index) => (
                         <div key={index}>
                             <input value={item} type="checkbox" onChange={handleCheck} />
@@ -124,9 +135,10 @@ function ResumeUpload() {
                         </div>
                     ))}
                 </div>
-                <div>
+                <div id='SkillsCheckedList'>
                     {`Items checked are: ${checkedItems}`}
                 </div>
+                <button id="SkillsUploadButton" onClick={handleSkills}>Submit</button>
             </div>
             <div class="footer">
                 <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
