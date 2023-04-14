@@ -29,3 +29,16 @@ export const PERSON = gql`
         }
     }
 `
+
+export const ADD_PERSON_SKILLS = gql`
+    mutation Mutation($input: [PersonCreateInput!]!) {
+        createPeople(input: $input) {
+            people {
+                hasSkills {
+                    name
+                }
+                name
+            }
+        }
+    }
+`
