@@ -19,12 +19,13 @@
 
     margin-top: 5%;
     margin-left: 8%;
-    margin-right: 9%;
+    margin-right: 10px;
 }
 
-#SkillsList label{
-    margin-left: 10px !important;
+.not-checked-item, .checked-item{
+    margin-left: 10px;
 }
+
 #SkillsCheckedList {
     font-family: 'Quicksand';
     font-style: normal;

@@ -95,93 +95,93 @@ function ResumeUpload() {
         if (data) console.log(data);
     };
 
-const handleAnalysis = async (event) => {
-    event.preventDefault();
+    const handleAnalysis = async (event) => {
+        event.preventDefault();
 
-    // Get file
-    const file = document.getElementById("ResumeUploadFile").files[0];
-    console.log(file);
-    // Call upload function
-    const res = await handleUpload(file);
-    console.log(res);
+        // Get file
+        const file = document.getElementById("ResumeUploadFile").files[0];
+        console.log(file);
+        // Call upload function
+        const res = await handleUpload(file);
+        console.log(res);
 
 
-    const api = 'https://rnb60r24od.execute-api.us-east-2.amazonaws.com/staging';
-    const data = {
-        'S3Object': {
-            'Bucket': 'tie-app-pdfs',
-            'Name': 'public/' + file.name,
-        }
+        const api = 'https://rnb60r24od.execute-api.us-east-2.amazonaws.com/staging';
+        const data = {
+            'S3Object': {
+                'Bucket': 'tie-app-pdfs',
+                'Name': 'public/' + file.name,
+            }
+        };
+
+        console.log('Sending post request...');
+        axios
+            .post(api, data)
+            .then((response) => {
+                console.log('Response back:');
+                console.log(response);
+                console.log(response["data"]["statusCode"]);
+                let b = response["data"]["body"]
+                setList(JSON.parse(b));
+                console.log(skillsList);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
-    console.log('Sending post request...');
-    axios
-        .post(api, data)
-        .then((response) => {
-            console.log('Response back:');
-            console.log(response);
-            console.log(response["data"]["statusCode"]);
-            let b = response["data"]["body"]
-            setList(JSON.parse(b));
-            console.log(skillsList);
+    const checkedItems = checked.length
+        ? checked.reduce((total, item) => {
+            return total + ", " + item;
         })
-        .catch((error) => {
-            console.error(error);
-        });
-}
+        : "";
 
-const checkedItems = checked.length
-    ? checked.reduce((total, item) => {
-        return total + ", " + item;
-    })
-    : "";
+    var isChecked = (item) =>
+        checked.includes(item) ? "checked-item" : "not-checked-item";
 
-var isChecked = (item) =>
-    checked.includes(item) ? "checked-item" : "not-checked-item";
-
-return (
-    // React.Fragment <> </>
-    <div class="page">
-        <div id="NavSpace">
-            <Navbar />
-        </div>
-
-        <div class="container" id="OrgUsSection">
-            <h1 id="ResumeUploadName">Resume Upload</h1>
-            <p id="ResumeUploadBlurb">
-                Please fill the fields below with the correct information about the applicant and then drag or drop the applicant's
-                resume in the last field. Only PDFs and DOCX files are accepted.
-            </p>
-            <form id="ResumeUploadform">
-                <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
-                {/* <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input> */}
-                <input type="file" id="ResumeUploadFile" name="filename"></input>
-                <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
-            </form>
-        </div>
-        <div id="SkillsContainer">
-            <div id='SkillsTitle'>Upload Skills</div>
-            <div id='SkillsList'>
-                {skillsList.map((item, index) => (
-                    <div key={index}>
-                        <input value={item} type="checkbox" onChange={handleCheck} />
-                        <span className={isChecked(item)}>{item}</span>
-                    </div>
-                ))}
+    return (
+        // React.Fragment <> </>
+        <div class="page">
+            <div id="NavSpace">
+                <Navbar />
             </div>
-            <div id='SkillsCheckedList'>
-                {`Items checked are: ${checkedItems}`}
+
+            <div class="container" id="OrgUsSection">
+                <h1 id="ResumeUploadName">Resume Upload</h1>
+                <p id="ResumeUploadBlurb">
+                    Please fill the fields below with the correct information about the applicant and then drag or drop the applicant's
+                    resume in the last field. Only PDFs and DOCX files are accepted.
+                </p>
+                <form id="ResumeUploadform">
+                    <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant First Name"></input>
+                    {/* <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input> */}
+                    <input type="file" id="ResumeUploadFile" name="filename"></input>
+                    <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
+                </form>
             </div>
-            <button id="SkillsUploadButton" onClick={useSkills}>Submit</button>
+            <div id="SkillsContainer">
+                <div id='SkillsTitle'>Upload Skills</div>
+                <div id='SkillsList'>
+                    {skillsList.map((item, index) => (
+                        <div key={index}>
+                            <input value={item} type="checkbox" onChange={handleCheck} />
+                            <span className={isChecked(item)}>{item}</span>
+                        </div>
+                    ))}
+                </div>
+                <div id='SkillsCheckedList'>
+                    {`Items checked are: ${checkedItems}`}
+                </div>
+                <button id="SkillsUploadButton" onClick={useSkills}>Submit</button>
+            </div>
+            <div class="footer">
+                <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
+                    <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
+                </a>
+                <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
+            </div>
         </div>
-        <div class="footer">
-            <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
-                <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
-            </a>
-            <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
-        </div>
-    </div>
-);
+    );
 }
 
 export default ResumeUpload;
