@@ -1,3 +1,92 @@
+#SkillsContainer {
+    position: relative;
+    margin-left: 16%;
+    margin-top: 3%;
+    margin-bottom: 7%;
+}
+
+#SkillsList {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 50px;
+    /* text-align: justify; */
+    /* display: flex; */
+    align-items: center;
+    letter-spacing: 0.30em;
+    color: #F4F4F4;
+
+    margin-top: 5%;
+    margin-left: 8%;
+    margin-right: 10px;
+}
+
+.not-checked-item, .checked-item{
+    margin-left: 10px;
+}
+
+#SkillsCheckedList {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 50px;
+    /* text-align: justify; */
+    /* display: flex; */
+    align-items: center;
+    letter-spacing: 0.30em;
+    color: #F4F4F4;
+
+    margin-top: 5%;
+    margin-left: 8%;
+    margin-right: 9%;
+}
+
+#SkillsTitle {
+    font-family: 'Julius Sans One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: #F4F4F4;
+
+    margin-top: 7.3%;
+}
+
+#SkillsUploadButton {
+    box-sizing: border-box;
+    margin-top: 8% !important;
+    margin-left: 25%;
+    width: 30%;
+    height: 65px;
+    background: #A79572;
+    border: 1px solid #5D513B;
+    border-radius: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.25em;
+    margin-top: 1.7%;
+    color: #EDF2FB;
+    text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+#SkillsUploadButton:hover {
+    background: none;
+    border: 2px solid #EDF2FB;
+    border-radius: 20px;
+
+    color: #EDF2FB;
+    text-shadow: 2px 1px 1px rgb(237, 242, 251, 0.25);
+}
+
+
 #NavSpace {
     height: 4.7em;
     width: 100%;
@@ -76,7 +165,7 @@
     background-size: 10px 10px;
 }
 
-#ResumeUploadFile{
+#ResumeUploadFile {
     width: 75%;
     height: 40px;
     border-top-right-radius: 16px;
@@ -92,7 +181,7 @@
     margin-left: 2%;
 }
 
-#ResumeUploadButton{
+#ResumeUploadButton {
     box-sizing: border-box;
     margin-top: 8% !important;
     margin-left: 25%;
@@ -114,7 +203,7 @@
     text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
-#ResumeUploadButton:hover{
+#ResumeUploadButton:hover {
     background: none;
     border: 2px solid #EDF2FB;
     border-radius: 20px;
