@@ -5,6 +5,7 @@ export function DirectoryBox(props) {
 
   const name = props.name
   const skills = props.skills
+  const type = props.type
 
   return (
 
@@ -18,14 +19,16 @@ export function DirectoryBox(props) {
           name && skills ? 
 
           <div className="col-8">
-            <h1 className="DirectoryName">{name}</h1>
-            <h2 className="DirectorySubtitle">Job Title</h2>
-            <h2 className="DirectorySubtitle">
-              Skills: 
-              {skills.map( (skill) => (
+            <h2 className="DirectoryName">{type}: {name}</h2>
+            <h3 className="DirectorySubtitle">Skill Count: {skills.length}</h3>
+            <h3 className="DirectorySubtitle">
+              Top Skills: 
+              {
+              skills.slice(0,3).map( (skill) => (
                 ` ${skill.name}`
-              ))}
-            </h2>
+              ))
+              }
+            </h3>
           </div>
           :
           <div className="col-8">

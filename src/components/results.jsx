@@ -3,6 +3,8 @@ import NavBar from "./Navbar";
 import '../css/results.css';
 import DataTable from 'react-data-table-component';
 import MatchesImage from '../images/ResultsExample.JPG'
+import { Directory } from './Directory/Directory'
+import { Footer } from './Footer/Footer';
 
 const columns = [
     {
@@ -105,83 +107,7 @@ function Results() {
             </div>
             <div class="container" id="OrgUsSection">
                 <div class="row">
-                    <div class="col-5">
-                        <h1 id="OrgTitle">Applicants</h1>
-                        <div id="OrgBox">
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ApplicantsBox">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <span class="dot"></span>
-                                    </div>
-                                    <div class="col-8">
-                                        <h1 class="ApplicantsName">First Name, Last Name</h1>
-                                        <h2 class="ApplicantsSubtitle">Matching Score</h2>
-                                        <h2 class="ApplicantsSubtitle">Skill 1, Skill 2, Skill 3</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Directory />
                     <div class="col-1"></div>
                     <div class="col-6">
                         <h1 id="OrgTitle2">Results</h1>
@@ -205,12 +131,7 @@ function Results() {
                     </div>
                 </div>
             </div>
-            <div class="footer" id="FooterOrg">
-                <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
-                    <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
-                </a>    
-                <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
-            </div>
+            <Footer />
         </div>
     );
 }

@@ -57,7 +57,7 @@ function ResumeUpload() {
         setChecked(updatedList);
     };
 
-    const useSkills = () => {
+    const useSkills = async () => {
 
         const name = document.getElementById("ResumeUploadquery").value;
         const skillsArr = checked.map(skill => ({
@@ -73,15 +73,16 @@ function ResumeUpload() {
             }
         }));
         
-        addPerson({
+        await addPerson({
             errorPolicy: "all",
             variables: {
                 "input": [
                     {
-                        "hasSkills": {
-                            "connectOrCreate": skillsArr                                
-                        },
-                        "name": name
+                        "name": name,
+                        "type": "Applicant",
+                        "skills": {
+                            "connectOrCreate": skillsArr
+                        }
                     }
                 ]
             }
@@ -92,7 +93,10 @@ function ResumeUpload() {
             console.log('Error...');
             console.log(error);
         }
-        if (data) console.log(data);
+        if (data) {
+            let info = data.createPeople.info;
+            console.log(`Nodes Created: ${info.nodesCreated}, Relationship Created: ${info.relationshipsCreated}`);
+        }
     };
 
     const handleAnalysis = async (event) => {
@@ -173,7 +177,20 @@ function ResumeUpload() {
                     {`Items checked are: ${checkedItems}`}
                 </div>
                 <button id="SkillsUploadButton" onClick={useSkills}>Submit</button>
+                <div id='mutationResponse'>
+                    {
+                        data ? 
+                        <>
+                            <p>Nodes Created: {data.createPeople.info.nodesCreated}</p>
+                            <p>Relationships Created: {data.createPeople.info.relationshipsCreated}</p>
+                        </>
+                        :
+                        <></>
+                    }
+                    
+                </div>
             </div>
+            
             <div class="footer">
                 <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
                     <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>

@@ -27,6 +27,10 @@
     display: inline-block;
 }
 
+.SkillsBox1:hover, .SkillsBox2:hover {
+    background: rgba(203, 201, 201, 0.3);
+}
+
 #SkillsPadding{
     padding-left: 0%;
 }

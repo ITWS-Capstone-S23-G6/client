@@ -7,6 +7,10 @@
     border-radius: 10px;
 }
 
+.DirectoryBox:hover {
+    background: rgba(203, 201, 201, 0.3);
+}
+
 .dot {
     border-radius: 50%;
     display: inline-block;

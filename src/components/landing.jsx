@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import '../css/landing.css';
 import LandingIcon from '../images/TinyLogoNB.png'
+import { D3Background } from './Animation/D3Background'
 
 
 function Landing() {
@@ -27,6 +28,7 @@ function Landing() {
                 <div class="col-1"></div>
                 <div class="col-7">
                     <div class="area" > 
+                        {/* <D3Background /> */}
                         <ul class="circlesLanding">
                             <li></li>  <li></li>
                             <li></li>  <li></li>
@@ -42,6 +44,7 @@ function Landing() {
                     </div >
                 </div>
             </div>
+            {/* <D3Background /> */}
         </div>
     );
 }

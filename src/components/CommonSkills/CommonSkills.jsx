@@ -1,13 +1,13 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { SKILL } from "../../queries/graphql";
+import { GET_SKILL } from "../../queries/graphql";
 import "./CommonSkills.css";
 import { SkillBox } from "./SkillBox";
 
 export function CommonSkills() {
 
 
-    const { loading, error, data } =  useQuery( SKILL, { 
+    const { loading, error, data } =  useQuery( GET_SKILL, { 
         errorPolicy: "all",
 
     })

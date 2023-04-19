@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { PROJECT } from "../../queries/graphql";
+import { GET_PROJECT } from "../../queries/graphql";
 import { ProjectBox } from "./ProjectBox";
 import './CurrentProjects.css'
 
 export function CurrentProjects() {
-    const { loading, error, data } =  useQuery( PROJECT, { 
+    const { loading, error, data } =  useQuery( GET_PROJECT, { 
         errorPolicy: "all",
         
     })
