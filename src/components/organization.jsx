@@ -30,7 +30,7 @@ function Organization() {
             <div style={{ 
                 display: 'flex',
                 padding: '2rem',
-                gap: '4rem'
+                gap: '4rem',
             }}>
                 <Directory />
                 <CommonSkills />
@@ -40,7 +40,7 @@ function Organization() {
                 padding: '2rem',
                 gap: '4rem'
             }}>
-                {/* <CurrentProjects /> */}
+                <CurrentProjects />
             </div>
         </div>
         <Footer />

@@ -25,10 +25,16 @@ export function CurrentProjects() {
         const projects = data.projects
 
         return (
-            <>
-                <h1 id="OrgTitle3">Projects</h1>
+            <div>
+                <h1 id="OrgTitle2">Projects</h1>
                 <div id="OrgBox">
-                    <div> 
+                    <div style={{
+                        width:"100%",
+                        display: 'grid',
+                        gap: '1rem',
+                        gridTemplateColumns: '1fr 1fr',
+                        padding: '1rem 0'
+                    }}> 
                     {
                         projects.map((project, i) => (
                             <ProjectBox key={i} name={project.name} num={i} skills={project.useSkills}/>
@@ -36,7 +42,7 @@ export function CurrentProjects() {
                     }
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }

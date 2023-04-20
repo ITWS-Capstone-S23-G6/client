@@ -45,7 +45,10 @@ export function Directory() {
         let all_people = [...data.people].sort((a, b) => b.skills.length - a.skills.length)
 
         return (
-            <div>
+            <div style={{
+                width:"100%",
+                maxWidth: '800px',
+            }}>
                 <h1 id="OrgTitle">Directory</h1>
                 <div id="OrgBox">
                     {all_people.map((person, i) => {

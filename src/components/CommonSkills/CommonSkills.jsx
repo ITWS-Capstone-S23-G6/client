@@ -32,8 +32,11 @@ export function CommonSkills() {
                 <div id="OrgBox">
                     <div style={{
                         width:"100%",
+                        maxWidth: '800px',
                         display: 'grid',
-                        gridTemplateColumns: '1fr 1fr'
+                        gap: '1rem',
+                        gridTemplateColumns: '1fr 1fr',
+                        padding: '1rem 0'
                     }}> 
                     {
                         skills.filter(skill => skill.category !== null).map( (skill, i) => (
