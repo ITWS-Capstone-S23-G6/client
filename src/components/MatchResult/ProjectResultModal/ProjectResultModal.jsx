@@ -7,6 +7,13 @@ import {
   Backdrop,
   Typography
 } from "@mui/material";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { ProjectDataContext } from "../../Projects/ProjectDataContext";
@@ -14,9 +21,9 @@ import { ProjectDataContext } from "../../Projects/ProjectDataContext";
 const style = {
   position: "absolute",
   top: "50%",
-  left: "60%",
+  left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: 1000,
   bgcolor: "background.paper",
   border: "2px solid",
   borderRadius: "10pt",
@@ -52,23 +59,51 @@ export const ProjectResultModal = () => {
             <Typography id="transition-modal-title" variant="h6" component="h2">
               {`Project: ${resultData.name}`}
             </Typography>
-            {resultData && (
-              <>
-                {/* <Typography className="transition-modal-description" sx={{ mt: 2 }}> */}
-                  {resultData.matchPeople.map((match, i) => {
-                    return (
-                      <>
-                        <Typography key={i} className="transition-modal-description" variant="p" sx={{ mt: 2 }}>
-                          {match.people.name} <br></br>
-                          {match.people.type}
-                          {match.coverage_score}
-                        </Typography>
-                      </>
-                    )
-                  })}
-                {/* </Typography> */}
-              </>
-            )}
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell align="left">Category</TableCell>
+                      <TableCell align="left">Coverage Score</TableCell>
+                      <TableCell align="left">Missed Skills</TableCell>
+                      <TableCell align="left">Similar Missed Skills</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                  {resultData && (
+                    <>
+                      {resultData.matchPeople.map((match, i) => {
+                        return (
+                          <>
+                            <TableRow
+                              key={i}
+                              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                              <TableCell component="th" scope="row">
+                                {match.people.name}
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                {match.people.type}
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                {match.coverage_score}
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                {match.missed_skills.toString()}
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                {match.similar_missed_skills.toString()}
+                              </TableCell>
+                            </TableRow>
+                          </>
+                        )
+                      })}
+                    </>
+                  )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
           </Box>
         </Fade>
       </Modal>
