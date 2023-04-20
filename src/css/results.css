@@ -50,12 +50,12 @@
     margin-top: 0.3%;
     box-sizing: border-box;
     position: absolute;
-    width: 600px;
+    width: 30%;
     height: 1000px;
     border-top: 5px solid #E5E6E4;
-
+    max-height: 60%;
     -ms-overflow-style: none;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 #OrgBox2{

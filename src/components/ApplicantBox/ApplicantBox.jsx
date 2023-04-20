@@ -1,5 +1,5 @@
 import React from "react";
-import "./Directory.css";
+import "./ApplicantBox.css";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -14,21 +14,18 @@ const darkTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: "30px",
+          borderRadius: "10px",
           backgroundColor: "rgba(166, 162, 162, 0.3);",
-          fontFamily: "Quicksand",
-          height: "150px"
         },
       },
     },
   },
 });
 
-export function DirectoryBox(props) {
-
-  const name = props.name
-  const skills = props.skills
-  const type = props.type
+export function ApplicantBox(props) {
+  const name = props.name;
+  const skills = props.skills;
+  const type = props.type;
 
   return (
     // <div className="DirectoryBox">
@@ -41,24 +38,20 @@ export function DirectoryBox(props) {
                 <Typography gutterBottom variant="h5" component="div">
                   {name}
                 </Typography>
-                <Typography gutterBottom variant="h7" component="div">
+                <Typography gutterBottom variant="h6" component="div">
                   {type}
                 </Typography>
-                <Typography gutterBottom variant="body2" component="div">
+                <Typography gutterBottom variant="body1" component="div">
                   Skill Count: {skills.length}
                 </Typography>
-                <Typography variant="body3" color="text.primary">
-                  Top Skills:
-                  {skills.slice(0, 5).map((skill, i) => { 
-                    if (i === 0) {
-                      return `   ${skill.name}`
-                    } else {
-                      return `, ${skill.name}`
-                    }
-                    
-                    })}
+                <Typography variant="body2" color="text.secondary">
+                  Skills:
+                  {skills.slice(0, 10).map((skill) => ` ${skill.name}`)}
                 </Typography>
               </CardContent>
+              <CardActions>
+                <Button size="small">Match Score</Button>
+              </CardActions>
             </Card>
           </ThemeProvider>
         ) : 

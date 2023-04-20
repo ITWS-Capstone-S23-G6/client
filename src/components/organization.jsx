@@ -19,7 +19,7 @@ function Organization() {
             </div>
             <div className="container" id="OrgUsSection">
                 <div className="row">
-                    <Directory />
+                    <Directory title={"Directory"}/>
                     <div className="col-1"></div>
                     <div className="col-6">
                         <CommonSkills />

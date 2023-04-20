@@ -11,7 +11,7 @@ export function ProjectBox(props) {
             <div className="row">
                 <div className="col-12">
                     <h1 className="ProjectsName">{name}</h1>
-                    <h2 className="ProjectsSubtitle">Description</h2>
+                    <h2 className="ProjectsSubtitle">Skills Needed: {props.skills.length}</h2>
                 </div>
             </div>
         </div>

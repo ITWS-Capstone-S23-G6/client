@@ -3,10 +3,11 @@ import { useQuery } from "@apollo/client";
 import { GET_PEOPLE } from "../../queries/graphql";
 import './Directory.css'
 import { DirectoryBox } from "./DirectoryBox";
+import { ApplicantBox } from "../ApplicantBox/ApplicantBox";
 
 
 
-export function Directory() {
+export function Directory(props) {
 
     // Fetch data from the server endpoint using predefined query schema
     const skill_limit = 4
@@ -46,13 +47,14 @@ export function Directory() {
 
         return (
             <div className='col-5'>
-                <h1 id="OrgTitle">Directory</h1>
+                <h1 id="OrgTitle">{props.title}</h1>
                 <div id="OrgBox">
                     {all_people.map((person, i) => {
-                        // if (person.skills.length > 0) 
-                            return <DirectoryBox key={i} name={person.name} type={person.type} skills={person.skills}/>
-
-                    }
+                            if (props.title !== "Applicant")
+                                return <DirectoryBox key={i} name={person.name} type={person.type} skills={person.skills}/>
+                            else
+                                return <ApplicantBox key={i} name={person.name} type={person.type} skills={person.skills}/>
+                        }
                     )}
                 </div>
             </div>

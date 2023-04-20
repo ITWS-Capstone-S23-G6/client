@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+// ---------------- QUERIES ---------------------------------------------------
 export const GET_SKILL = gql`
   query GET_SKILL {
     skills {
@@ -13,12 +14,19 @@ export const GET_PROJECT = gql`
   query GET_PROJECT {
     projects {
       name
+      useSkills {
+        name
+        category
+      }
     }
   }
 `;
 
 export const GET_PEOPLE = gql`
-  query GET_PEOPLE($person_options: PersonOptions, $skill_options: SkillOptions) {
+  query GET_PEOPLE(
+    $person_options: PersonOptions
+    $skill_options: SkillOptions
+  ) {
     people(options: $person_options) {
       name
       type
@@ -29,6 +37,24 @@ export const GET_PEOPLE = gql`
   }
 `;
 
+export const GET_PROJECT_MATCHING_SCORE = gql`
+  query Projects($peopleWhere: PersonWhere) {
+    people(where: $peopleWhere) {
+      name
+      type
+      matchProjects {
+        coverage_score
+        missed_skills
+        similar_missed_skills
+        project {
+          name
+        }
+      }
+    }
+  }
+`;
+
+// ---------------- MUTATIONS -------------------------------------------------
 
 export const ADD_PERSON_SKILLS = gql`
   mutation Add_Person_Skills($input: [PersonCreateInput!]!) {

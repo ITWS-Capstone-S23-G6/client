@@ -26,12 +26,12 @@ export function CurrentProjects() {
 
         return (
             <>
-                <h1 id="OrgTitle3">Current Projects</h1>
+                <h1 id="OrgTitle3">Projects</h1>
                 <div id="OrgBox2">
                     <div style={{width:"100%"}}> 
                     {
                         projects.map((project, i) => (
-                            <ProjectBox key={i} name={project.name} num={i}/>
+                            <ProjectBox key={i} name={project.name} num={i} skills={project.useSkills}/>
                         ))
                     }
                     </div>

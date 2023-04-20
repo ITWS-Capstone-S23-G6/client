@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import '../css/landing.css';
 import LandingIcon from '../images/TinyLogoNB.png'
-import { D3Background } from './Animation/D3Background'
 
 
 function Landing() {

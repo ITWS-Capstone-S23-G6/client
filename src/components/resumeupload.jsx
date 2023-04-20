@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useMutation } from "@apollo/client";
 import { ADD_PERSON_SKILLS } from '../queries/graphql';
 import { Alert, AlertTitle } from '@mui/material';
+import { Footer } from './Footer/Footer';
 
 Amplify.configure({
     Auth: {
@@ -222,12 +223,7 @@ function ResumeUpload() {
                 
             </div>
 
-            <div class="footer">
-                <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
-                    <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
-                </a>
-                <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
-            </div>
+            <Footer />
         </div>
     );
 }
