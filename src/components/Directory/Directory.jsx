@@ -12,7 +12,7 @@ export function Directory(props) {
     // Fetch data from the server endpoint using predefined query schema
     const skill_limit = 4
 
-    const { loading, error, data } =  useQuery( GET_PEOPLE, { 
+    const { loading, error, data } = useQuery(GET_PEOPLE, {
         errorPolicy: "all",
         variables: {
             "person_options": {
@@ -46,15 +46,15 @@ export function Directory(props) {
         let all_people = [...data.people].sort((a, b) => b.skills.length - a.skills.length)
 
         return (
-            <div className='col-5'>
+            <div>
                 <h1 id="OrgTitle">{props.title}</h1>
                 <div id="OrgBox">
                     {all_people.map((person, i) => {
-                            if (props.title !== "Applicant")
-                                return <DirectoryBox key={i} name={person.name} type={person.type} skills={person.skills}/>
-                            else
-                                return <ApplicantBox key={i} name={person.name} type={person.type} skills={person.skills}/>
-                        }
+                        if (props.title !== "Applicant")
+                            return <DirectoryBox key={i} name={person.name} type={person.type} skills={person.skills} />
+                        else
+                            return <ApplicantBox key={i} name={person.name} type={person.type} skills={person.skills} />
+                    }
                     )}
                 </div>
             </div>

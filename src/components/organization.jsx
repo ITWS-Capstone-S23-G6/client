@@ -10,21 +10,23 @@ import { Footer } from './Footer/Footer';
 
 
 function Organization() {
-    
+
     return (
         // React.Fragment <> </>
-        <div className="page"> 
+        <div className="page">
             <div id="NavSpace">
                 <NavBar />
             </div>
             <div className="container" id="OrgUsSection">
                 <div className="row">
-                    <Directory title={"Directory"}/>
-                    <div className="col-1"></div>
-                    <div className="col-6">
+                    <div className="col-5"><Directory title={"Directory"} /></div>
+                    <div className="col-5">
                         <CommonSkills />
-                        <CurrentProjects />
                     </div>
+                </div>
+                <div className='row'>
+                    <div className='col-6'></div>
+                    <div className='col-6'><CurrentProjects /></div>
                 </div>
             </div>
             <Footer />
