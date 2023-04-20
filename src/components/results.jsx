@@ -4,23 +4,26 @@ import '../css/results.css';
 import { Applicants } from "./Applicants/Applicants"
 import { Footer } from './Footer/Footer';
 import { Projects } from './Projects/Projects'
+import { Grid } from '@mui/material';
 
 
 function Results() {
     return (
         // React.Fragment <> </>
-        <div className="page"> 
-            <div id="NavSpace">
-                <NavBar />
+        <div className="" style={{ backgroundColor: '#0f1521'}}> 
+            <NavBar />
+            <div style={{ 
+                display: 'flex',
+                padding: '2rem'
+            }}>
+                <Applicants/>
             </div>
-            <div className="container" id="OrgUsSection">
-                <div className="row">
-                    <Applicants />
-                    <div className="col-1"></div>
-                    <div className="col-6">
-                        <Projects />
-                    </div>
-                </div>
+
+            <div style={{ 
+                display: 'flex',
+                padding: '2rem'
+            }}>
+                <Projects />
             </div>
             <Footer />
         </div>

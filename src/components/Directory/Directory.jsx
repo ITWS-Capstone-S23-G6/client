@@ -15,7 +15,7 @@ export function Directory() {
         errorPolicy: "all",
         variables: {
             "person_options": {
-                "sort": [
+                "sort": [ 
                     {
                         "type": "ASC",
                     }

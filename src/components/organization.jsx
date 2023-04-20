@@ -12,13 +12,11 @@ import { Footer } from './Footer/Footer';
 function Organization() {
 
     return (
-        // React.Fragment <> </>
+        <>
         <div className="page">
-            <div id="NavSpace">
-                <NavBar />
-            </div>
-            <div className="container" id="OrgUsSection">
-                <div className="row">
+            <NavBar />
+            {/* <div className="container" id="OrgUsSection"> */}
+                {/* <div className="row" style={{backgroundColor: 'red'}}>
                     <div className="col-5"><Directory title={"Directory"} /></div>
                     <div className="col-5">
                         <CommonSkills />
@@ -27,10 +25,26 @@ function Organization() {
                 <div className='row'>
                     <div className='col-6'></div>
                     <div className='col-6'><CurrentProjects /></div>
-                </div>
+                </div> */}
+            {/* </div> */}
+            <div style={{ 
+                display: 'flex',
+                padding: '2rem',
+                gap: '4rem'
+            }}>
+                <Directory />
+                <CommonSkills />
             </div>
-            <Footer />
+            <div style={{ 
+                display: 'flex',
+                padding: '2rem',
+                gap: '4rem'
+            }}>
+                {/* <CurrentProjects /> */}
+            </div>
         </div>
+        <Footer />
+        </>
     );
 }
 

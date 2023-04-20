@@ -27,8 +27,8 @@ export function CurrentProjects() {
         return (
             <>
                 <h1 id="OrgTitle3">Projects</h1>
-                <div id="OrgBox2">
-                    <div style={{width:"100%"}}> 
+                <div id="OrgBox">
+                    <div> 
                     {
                         projects.map((project, i) => (
                             <ProjectBox key={i} name={project.name} num={i} skills={project.useSkills}/>

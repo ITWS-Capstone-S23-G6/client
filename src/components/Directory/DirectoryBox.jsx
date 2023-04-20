@@ -17,7 +17,6 @@ const darkTheme = createTheme({
           borderRadius: "30px",
           backgroundColor: "rgba(166, 162, 162, 0.3);",
           fontFamily: "Quicksand",
-          height: "150px"
         },
       },
     },

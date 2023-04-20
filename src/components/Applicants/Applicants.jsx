@@ -58,9 +58,13 @@ export function Applicants() {
       <ApplicantDataContext.Provider
         value={{ resultData, setResultData, isModalVisible, setIsModalVisible }}
       >
-        <div>
+        <div className="" style={{ width: '100%'}}>
           <h1 id="OrgTitle">Applicants</h1>
-          <div id="OrgBox">
+          <div id="" style={{ 
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '20px'
+          }}>
             {all_people.map((person, i) => {
               if (person.type === "Applicant")
                 return (

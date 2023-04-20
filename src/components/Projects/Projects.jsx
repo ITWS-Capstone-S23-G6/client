@@ -39,10 +39,13 @@ export function Projects() {
       <ProjectDataContext.Provider
         value={{ resultData, setResultData, isModalVisible, setIsModalVisible }}
       >
-        <div>
-          <h1 id="OrgTitle3">Projects</h1>
-          <div id="OrgBox2">
-            <div style={{ width: "100%" }}>
+        <div className="" style={{ width: '100%'}}>
+          <h1 id="OrgTitle">Projects</h1>
+          <div style={{ 
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '20px'
+          }}>
               {projects.map((project, i) => (
                 <ProjectCard
                   key={i}
@@ -52,7 +55,6 @@ export function Projects() {
                   toggleModal={(result) => toggleModal(result)}
                 />
               ))}
-            </div>
           </div>
           {isModalVisible && resultData && (
             <div className="project-modal-container">

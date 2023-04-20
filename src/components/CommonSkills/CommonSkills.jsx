@@ -27,10 +27,14 @@ export function CommonSkills() {
         const skills = data.skills
 
         return (
-            <>
+            <div>
                 <h1 id="OrgTitle2">Common Skills</h1>
-                <div id="OrgBox2">
-                    <div style={{width:"100%"}}> 
+                <div id="OrgBox">
+                    <div style={{
+                        width:"100%",
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr'
+                    }}> 
                     {
                         skills.filter(skill => skill.category !== null).map( (skill, i) => (
                             <SkillBox key={i} name={skill.name} category={skill.category} i={i}/>
@@ -38,7 +42,7 @@ export function CommonSkills() {
                     }
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
