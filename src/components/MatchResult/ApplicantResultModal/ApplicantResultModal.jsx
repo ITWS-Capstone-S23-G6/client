@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import {
   Box,
   IconButton,
@@ -29,6 +29,7 @@ export const ApplicantResultModal = () => {
   const { resultData, setResultData, isModalVisible, setIsModalVisible } = useContext(ApplicantDataContext)
 
   const handleClose = () => {
+    console.log(resultData);
     setIsModalVisible(false);
     setResultData(null);
   }
@@ -50,18 +51,18 @@ export const ApplicantResultModal = () => {
               <CloseIcon fontSize="inherit" color="warning"/>
             </IconButton>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              {`People: ${resultData.name}`}
+              {`Person: ${resultData.name}`}
             </Typography>
             {resultData && (
               <>
                 <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                  {resultData.matchPeople.map((match, i) => {
+                  {resultData.matchProjects.map((match, i) => {
                     return (
                       <>
                         <Typography id="transition-modal-description" variant="p" sx={{ mt: 2 }}>
-                          {match.people.name} <br></br>
-                          {match.people.type}
-                          {match.coverage_score}
+                          {match.project.name} <br></br>
+                          {match.coverage_score} <br></br>
+                          
                         </Typography>
                       </>
                     )

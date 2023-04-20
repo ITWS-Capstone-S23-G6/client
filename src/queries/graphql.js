@@ -39,8 +39,8 @@ export const GET_PEOPLE = gql`
 `;
 
 export const GET_PROJECT_MATCHING_SCORE = gql`
-  query Projects($peopleWhere: PersonWhere) {
-    people(where: $peopleWhere) {
+  query Projects($where: PersonWhere) {
+    people(where: $where) {
       name
       type
       matchProjects {

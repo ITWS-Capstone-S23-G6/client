@@ -16,28 +16,30 @@ export function Projects() {
     setIsModalVisible(true);
   };
 
-
   const { loading, error, data } = useQuery(GET_PROJECT, {
     errorPolicy: "all",
   });
 
   if (error) {
-    console.log("ERROR: CommonSkills");
+    console.log("ERROR: Projects");
     console.log(error);
     return <p>ERROR!</p>;
   }
 
   if (loading) {
-    console.log("Loading CurrentProjects...");
+    console.log("Loading Projects...");
     return <p>LOADING...</p>;
   }
 
   if (data) {
+    console.log("Projects Loaded");
     const projects = data.projects;
 
     return (
-      <ProjectDataContext.Provider value={{ resultData, setResultData, isModalVisible, setIsModalVisible }}>
-        <>
+      <ProjectDataContext.Provider
+        value={{ resultData, setResultData, isModalVisible, setIsModalVisible }}
+      >
+        <div>
           <h1 id="OrgTitle3">Projects</h1>
           <div id="OrgBox2">
             <div style={{ width: "100%" }}>
@@ -47,8 +49,6 @@ export function Projects() {
                   num={i}
                   projectName={project.name}
                   skills={project.useSkills}
-                  // resultData={resultData}
-                  // setResultData={setResultData}
                   toggleModal={(result) => toggleModal(result)}
                 />
               ))}
@@ -56,10 +56,10 @@ export function Projects() {
           </div>
           {isModalVisible && resultData && (
             <div className="project-modal-container">
-              <ProjectResultModal  />
+              <ProjectResultModal />
             </div>
           )}
-        </>
+        </div>
       </ProjectDataContext.Provider>
     );
   }
