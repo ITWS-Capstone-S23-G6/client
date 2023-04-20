@@ -54,6 +54,23 @@ export const GET_PROJECT_MATCHING_SCORE = gql`
   }
 `;
 
+export const GET_PEOPLE_MATCHING_SCORE = gql`
+  query Projects($where: ProjectWhere) {
+    projects(where: $where) {
+      name
+      matchPeople {
+        coverage_score
+        missed_skills
+        similar_missed_skills
+        people {
+          name
+          type
+        }
+      }
+    }
+  }
+`;
+
 // ---------------- MUTATIONS -------------------------------------------------
 
 export const ADD_PERSON_SKILLS = gql`

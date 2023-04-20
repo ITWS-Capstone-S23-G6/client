@@ -7,6 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 
+import { GET_PROJECT_MATCHING_SCORE } from "../../queries/graphql";
+import { useLazyQuery } from "@apollo/client";
+
+
 // style overrides
 const darkTheme = createTheme({
   palette: { mode: "dark" },
@@ -46,7 +50,14 @@ export function ApplicantBox(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Skills:
-                  {skills.slice(0, 10).map((skill) => ` ${skill.name}`)}
+                  {skills.map((skill, i) => { 
+                    if (i === 0) {
+                      return `   ${skill.name}`
+                    } else {
+                      return `, ${skill.name}`
+                    }
+                    
+                    })}
                 </Typography>
               </CardContent>
               <CardActions>

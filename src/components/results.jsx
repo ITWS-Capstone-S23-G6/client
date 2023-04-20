@@ -3,6 +3,7 @@ import NavBar from "./Navbar";
 import '../css/results.css';
 import { Directory } from './Directory/Directory'
 import { Footer } from './Footer/Footer';
+import { Projects } from './Projects/Projects'
 
 
 function Results() {
@@ -17,9 +18,7 @@ function Results() {
                     <Directory title={"Applicant"}/>
                     <div className="col-1"></div>
                     <div className="col-6">
-                        <h1 id="OrgTitle2">Projects</h1>
-                        <div id="OrgBox2">
-                        </div>
+                        <Projects />
                     </div>
                 </div>
             </div>
