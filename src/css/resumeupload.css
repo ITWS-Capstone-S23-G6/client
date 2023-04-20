@@ -26,22 +26,14 @@
     margin-left: 10px;
 }
 
-#SkillsCheckedList {
-    font-family: 'Quicksand';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 50px;
-    /* text-align: justify; */
-    /* display: flex; */
-    align-items: center;
-    letter-spacing: 0.30em;
-    color: #F4F4F4;
-
-    margin-top: 5%;
-    margin-left: 8%;
-    margin-right: 9%;
+#mutationResponse {
+    margin-top: 2em;
 }
+
+#UploadAlert {
+    margin-right: 75%;
+}
+
 
 #SkillsTitle {
     font-family: 'Julius Sans One';
@@ -185,6 +177,7 @@
     box-sizing: border-box;
     margin-top: 8% !important;
     margin-left: 25%;
+    margin-bottom: 3%;
     width: 30%;
     height: 65px;
     background: #A79572;

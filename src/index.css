@@ -13,3 +13,7 @@
 .page{
     background-color: #0f1521;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

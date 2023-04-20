@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { PROJECT } from "../../queries/graphql";
+import { GET_PROJECT } from "../../queries/graphql";
 import { ProjectBox } from "./ProjectBox";
 import './CurrentProjects.css'
 
 export function CurrentProjects() {
-    const { loading, error, data } =  useQuery( PROJECT, { 
+    const { loading, error, data } =  useQuery( GET_PROJECT, { 
         errorPolicy: "all",
         
     })
@@ -25,18 +25,24 @@ export function CurrentProjects() {
         const projects = data.projects
 
         return (
-            <>
-                <h1 id="OrgTitle3">Current Projects</h1>
-                <div id="OrgBox2">
-                    <div style={{width:"100%"}}> 
+            <div>
+                <h1 id="OrgTitle2">Projects</h1>
+                <div id="OrgBox">
+                    <div style={{
+                        width:"100%",
+                        display: 'grid',
+                        gap: '1rem',
+                        gridTemplateColumns: '1fr 1fr',
+                        padding: '1rem 0'
+                    }}> 
                     {
                         projects.map((project, i) => (
-                            <ProjectBox key={i} name={project.name} num={i}/>
+                            <ProjectBox key={i} name={project.name} num={i} skills={project.useSkills}/>
                         ))
                     }
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }

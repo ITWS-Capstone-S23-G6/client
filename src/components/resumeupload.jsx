@@ -5,6 +5,8 @@ import { Amplify, Storage } from 'aws-amplify';
 import axios from 'axios';
 import { useMutation } from "@apollo/client";
 import { ADD_PERSON_SKILLS } from '../queries/graphql';
+import { Alert, AlertTitle } from '@mui/material';
+import { Footer } from './Footer/Footer';
 
 Amplify.configure({
     Auth: {
@@ -18,10 +20,11 @@ Amplify.configure({
         },
     },
 });
+
 function ResumeUpload() {
     const [skillsList, setList] = useState([]);
     const [checked, setChecked] = useState([]);
-    const [addPerson, {data, loading, error}] = useMutation(ADD_PERSON_SKILLS);
+    const [addPerson, { data, loading, error }] = useMutation(ADD_PERSON_SKILLS);
 
     const handleUpload = async (file) => {
 
@@ -57,7 +60,7 @@ function ResumeUpload() {
         setChecked(updatedList);
     };
 
-    const useSkills = () => {
+    const useSkills = async () => {
 
         const name = document.getElementById("ResumeUploadquery").value;
         const skillsArr = checked.map(skill => ({
@@ -72,16 +75,17 @@ function ResumeUpload() {
                 }
             }
         }));
-        
-        addPerson({
+
+        await addPerson({
             errorPolicy: "all",
             variables: {
                 "input": [
                     {
-                        "hasSkills": {
-                            "connectOrCreate": skillsArr                                
-                        },
-                        "name": name
+                        "name": name,
+                        "type": "Applicant",
+                        "skills": {
+                            "connectOrCreate": skillsArr
+                        }
                     }
                 ]
             }
@@ -92,7 +96,10 @@ function ResumeUpload() {
             console.log('Error...');
             console.log(error);
         }
-        if (data) console.log(data);
+        if (data) {
+            let info = data.createPeople.info;
+            console.log(`Nodes Created: ${info.nodesCreated}, Relationship Created: ${info.relationshipsCreated}`);
+        }
     };
 
     const handleAnalysis = async (event) => {
@@ -157,11 +164,26 @@ function ResumeUpload() {
                     {/* <input type="search" id="ResumeUploadquery" name="Search" placeholder=" Applicant Last Name"></input> */}
                     <input type="file" id="ResumeUploadFile" name="filename"></input>
                     <button id="ResumeUploadButton" onClick={handleAnalysis}>Submit</button>
+                    <div id="UploadAlert">
+                        {
+                            skillsList.length > 0 ?
+                                <>
+                                    <Alert severity="success">
+                                        <AlertTitle><strong>Success!</strong></AlertTitle>
+                                        Skills have been extracted from applicant's resume!
+                                    </Alert>
+                                </>
+                                :
+                                <></>
+                        }
+                    </div>
                 </form>
+                
             </div>
             <div id="SkillsContainer">
+                
                 <div id='SkillsTitle'>Upload Skills</div>
-                <div id='SkillsList'>
+                <div variant="filled" id='SkillsList'>
                     {skillsList.map((item, index) => (
                         <div key={index}>
                             <input value={item} type="checkbox" onChange={handleCheck} />
@@ -169,17 +191,39 @@ function ResumeUpload() {
                         </div>
                     ))}
                 </div>
-                <div id='SkillsCheckedList'>
-                    {`Items checked are: ${checkedItems}`}
+
+                <div id='UploadAlert'>
+                    {
+                        checkedItems !== ""  && !data ?
+                            <>
+                                <Alert severity="info">
+                                    {`Items checked are: ${checkedItems}`}
+                                </Alert>
+                            </>
+                            :
+                            <></>
+                    }
+                </div>
+                <div id='mutationResponse'>
+                    {
+                        data ?
+                            <>
+                                <Alert id="UploadAlert" severity="success">
+                                    <AlertTitle><strong>Success!</strong></AlertTitle>
+                                    Nodes Created: {data.createPeople.info.nodesCreated} <br></br>
+                                    Relationships Created: {data.createPeople.info.relationshipsCreated}
+                                </Alert>
+                            </>
+                            :
+                            <></>
+                    }
+
                 </div>
                 <button id="SkillsUploadButton" onClick={useSkills}>Submit</button>
+                
             </div>
-            <div class="footer">
-                <a id="JGIconBoxFooter" class="navbar-brand" href="https://www.jahnelgroup.com/">
-                    <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
-                </a>
-                <h2 class="FooterText">Copyright © 2023 | All rights reserved.</h2>
-            </div>
+
+            <Footer />
         </div>
     );
 }

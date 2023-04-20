@@ -27,6 +27,7 @@ function Landing() {
                 <div class="col-1"></div>
                 <div class="col-7">
                     <div class="area" > 
+                        {/* <D3Background /> */}
                         <ul class="circlesLanding">
                             <li></li>  <li></li>
                             <li></li>  <li></li>
@@ -42,6 +43,7 @@ function Landing() {
                     </div >
                 </div>
             </div>
+            {/* <D3Background /> */}
         </div>
     );
 }

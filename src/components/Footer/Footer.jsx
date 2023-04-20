@@ -4,7 +4,7 @@ import './Footer.css'
 export function Footer() {
     return (
 
-        <div className="footer" id="FooterOrg">
+        <div className="" id="" style={{ backgroundColor: 'rgb(163, 149, 117)'}}>
             <a id="JGIconBoxFooter" className="navbar-brand" href="https://www.jahnelgroup.com/">
                 <img id="JGIconFooter" src="https://www.jahnelgroup.com/assets/logos/jg-logo-bars.svg" alt="Jahnel Group Home"></img>
             </a>

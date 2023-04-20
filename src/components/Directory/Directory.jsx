@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { PERSON } from "../../queries/graphql";
+import { GET_PEOPLE } from "../../queries/graphql";
 import './Directory.css'
 import { DirectoryBox } from "./DirectoryBox";
 
@@ -11,15 +11,19 @@ export function Directory() {
     // Fetch data from the server endpoint using predefined query schema
     const skill_limit = 4
 
-    const { loading, error, data } =  useQuery( PERSON, { 
+    const { loading, error, data } = useQuery(GET_PEOPLE, {
         errorPolicy: "all",
         variables: {
-            "options": {
-                "limit": skill_limit,
-                "sort": {
-                "name": 'ASC'
-                }
-            }
+            "person_options": {
+                "sort": [ 
+                    {
+                        "type": "ASC",
+                    }
+                ]
+            },
+            // "skill_options": {
+            //     "limit": skill_limit,
+            // }
         }
     })
 
@@ -35,15 +39,21 @@ export function Directory() {
     }
 
     if (data) {
-        const all_person = data.people
+        console.log("Directory Loaded")
+        // console.log(data)
+        // custom sort people by skills count
+        let all_people = [...data.people].sort((a, b) => b.skills.length - a.skills.length)
 
         return (
-            <div className='col-5'>
+            <div style={{
+                width:"100%",
+                maxWidth: '800px',
+            }}>
                 <h1 id="OrgTitle">Directory</h1>
                 <div id="OrgBox">
-                    {all_person.map( (person, i) => (
-                        <DirectoryBox key={i} name={person.name} skills={person.hasSkills}/>
-                    ))}
+                    {all_people.map((person, i) => {
+                        return <DirectoryBox key={i} name={person.name} type={person.type} skills={person.skills} />
+                    })}
                 </div>
             </div>
         )
