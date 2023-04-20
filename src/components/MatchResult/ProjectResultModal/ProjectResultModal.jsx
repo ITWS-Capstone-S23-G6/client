@@ -54,11 +54,11 @@ export const ProjectResultModal = () => {
             </Typography>
             {resultData && (
               <>
-                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                {/* <Typography className="transition-modal-description" sx={{ mt: 2 }}> */}
                   {resultData.matchPeople.map((match, i) => {
                     return (
                       <>
-                        <Typography id="transition-modal-description" variant="p" sx={{ mt: 2 }}>
+                        <Typography key={i} className="transition-modal-description" variant="p" sx={{ mt: 2 }}>
                           {match.people.name} <br></br>
                           {match.people.type}
                           {match.coverage_score}
@@ -66,7 +66,7 @@ export const ProjectResultModal = () => {
                       </>
                     )
                   })}
-                </Typography>
+                {/* </Typography> */}
               </>
             )}
           </Box>

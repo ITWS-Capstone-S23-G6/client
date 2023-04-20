@@ -14,7 +14,7 @@ import { ApplicantDataContext } from "../../Applicants/ApplicantDataContext";
 const style = {
   position: "absolute",
   top: "50%",
-  left: "60%",
+  right: "50%",
   transform: "translate(-50%, -50%)",
   width: 500,
   bgcolor: "background.paper",
@@ -29,7 +29,6 @@ export const ApplicantResultModal = () => {
   const { resultData, setResultData, isModalVisible, setIsModalVisible } = useContext(ApplicantDataContext)
 
   const handleClose = () => {
-    console.log(resultData);
     setIsModalVisible(false);
     setResultData(null);
   }
@@ -55,11 +54,11 @@ export const ApplicantResultModal = () => {
             </Typography>
             {resultData && (
               <>
-                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+
                   {resultData.matchProjects.map((match, i) => {
                     return (
                       <>
-                        <Typography id="transition-modal-description" variant="p" sx={{ mt: 2 }}>
+                        <Typography key={i} className="transition-modal-description" variant="p" sx={{ mt: 2 }}>
                           {match.project.name} <br></br>
                           {match.coverage_score} <br></br>
                           
@@ -67,7 +66,7 @@ export const ApplicantResultModal = () => {
                       </>
                     )
                   })}
-                </Typography>
+
               </>
             )}
           </Box>
