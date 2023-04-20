@@ -5,7 +5,7 @@ import { ProjectCard } from "./ProjectCard";
 import "./Projects.css";
 
 import { ProjectDataContext } from "./ProjectDataContext";
-import { ProjectResultModal } from "../ProjectResultModal/ProjectResultModal";
+import { ProjectResultModal } from "../MatchResult/ProjectResultModal/ProjectResultModal";
 
 export function Projects() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -13,8 +13,9 @@ export function Projects() {
 
   const toggleModal = (data) => {
     setResultData(data);
-    setIsModalVisible(!isModalVisible);
+    setIsModalVisible(true);
   };
+
 
   const { loading, error, data } = useQuery(GET_PROJECT, {
     errorPolicy: "all",
@@ -35,7 +36,7 @@ export function Projects() {
     const projects = data.projects;
 
     return (
-      <ProjectDataContext.Provider value={{ resultData, setResultData, isModalVisible, setIsModalVisible}}>
+      <ProjectDataContext.Provider value={{ resultData, setResultData, isModalVisible, setIsModalVisible }}>
         <>
           <h1 id="OrgTitle3">Projects</h1>
           <div id="OrgBox2">
@@ -46,15 +47,17 @@ export function Projects() {
                   num={i}
                   projectName={project.name}
                   skills={project.useSkills}
-                  resultData={resultData}
-                  setResultData={setResultData}
-                  onMatchResult={() => toggleModal(resultData)}
+                  // resultData={resultData}
+                  // setResultData={setResultData}
+                  toggleModal={(result) => toggleModal(result)}
                 />
               ))}
             </div>
           </div>
-          {resultData && (
-            <ProjectResultModal resultData={resultData} closeModal={toggleModal} />
+          {isModalVisible && resultData && (
+            <div className="project-modal-container">
+              <ProjectResultModal  />
+            </div>
           )}
         </>
       </ProjectDataContext.Provider>

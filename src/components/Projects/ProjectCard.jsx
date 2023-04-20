@@ -52,7 +52,7 @@ export function ProjectCard(props) {
           name_CONTAINS: projectName,
         },
       },
-    }).then(res => setResultData(res.data.projects[0]))
+    }).then(res => setResultData(res.data.projects[0])).then(props.toggleModal(resultData))
   };
 
   useEffect(() => {

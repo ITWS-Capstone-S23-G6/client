@@ -1,5 +1,5 @@
 import React from "react";
-import "./ApplicantBox.css";
+import "./Applicants.css";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 
-import { GET_PROJECT_MATCHING_SCORE } from "../../queries/graphql";
+import { GET_PEOPLE_MATCHING_SCORE } from "../../queries/graphql";
 import { useLazyQuery } from "@apollo/client";
 
 
@@ -26,10 +26,13 @@ const darkTheme = createTheme({
   },
 });
 
-export function ApplicantBox(props) {
+export function ApplicantCard(props) {
   const name = props.name;
   const skills = props.skills;
   const type = props.type;
+
+  let categories = new Set();
+  skills.forEach( (skill) => { if (skill.category) categories.add(skill.category);});
 
   return (
     // <div className="DirectoryBox">
@@ -47,6 +50,17 @@ export function ApplicantBox(props) {
                 </Typography>
                 <Typography gutterBottom variant="body1" component="div">
                   Skill Count: {skills.length}
+                </Typography>
+                <Typography variant="body1" color="text.primary">
+                  Skills in: 
+                  {Array.from(categories).map((category, i) => { 
+                    if (i === 0) {
+                      return `   ${category}`
+                    } else {
+                      return `, ${category}`
+                    }
+                    
+                    })}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Skills:

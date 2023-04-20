@@ -32,6 +32,7 @@ export const GET_PEOPLE = gql`
       type
       skills(options: $skill_options) {
         name
+        category
       }
     }
   }

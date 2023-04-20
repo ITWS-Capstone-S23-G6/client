@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from "./Navbar";
 import '../css/results.css';
-import { Directory } from './Directory/Directory'
+import { Applicants } from "./Applicants/Applicants"
 import { Footer } from './Footer/Footer';
 import { Projects } from './Projects/Projects'
 
@@ -15,7 +15,7 @@ function Results() {
             </div>
             <div className="container" id="OrgUsSection">
                 <div className="row">
-                    <Directory title={"Applicant"}/>
+                    <Applicants />
                     <div className="col-1"></div>
                     <div className="col-6">
                         <Projects />
